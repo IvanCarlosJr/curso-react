@@ -22,7 +22,7 @@ export const Home = () => {
   }, []);
 
   useEffect(() => {
-    console.log(new Date().toLocaleString('pt-BR'));
+    // console.log(new Date().toLocaleString('pt-BR'));
     handleLoadPosts(0, postsPerPage);
   }, [handleLoadPosts, postsPerPage]);
 
@@ -43,8 +43,8 @@ export const Home = () => {
   const noMorePosts = page + postsPerPage >= allPosts.length;
   const filteredPosts = searchValue
     ? allPosts.filter((post) => {
-      return post.title.toLowerCase().includes(searchValue.toLowerCase());
-    })
+        return post.title.toLowerCase().includes(searchValue.toLowerCase());
+      })
     : posts;
 
   return (
@@ -57,7 +57,7 @@ export const Home = () => {
 
       {filteredPosts.length > 0 && <Posts posts={filteredPosts} />}
 
-      {filteredPosts.length === 0 && <p>Não há posts =(</p>}
+      {filteredPosts.length === 0 && <p>Não existem posts =(</p>}
 
       <div className="button-container">
         {!searchValue && <Button text="Load more posts" onClick={loadMorePosts} disabled={noMorePosts} />}
